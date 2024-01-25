@@ -1,6 +1,6 @@
 ﻿Console.WriteLine("Let's play Guess The Number!");
 
-// 1. Ask the player for a range of numbers
+// 1. Ask the player for a range of numbers (done)
 Console.WriteLine("Provide a range of numbers between which you want to guess");
 
 Console.Write("Minimum: ");
@@ -16,7 +16,10 @@ if(!minResult || !maxResult || maxRange <= minRange)
     Console.WriteLine($"I don't get your math so it will be a number between {minRange} and {maxRange}");
 }
 
-// 2. Random number generator
+// 2. Random number generator (done)
+Random rng = new Random();
+int generatedNumber = rng.Next(minRange, maxRange+1);
+
 // 3. Ask player to provide number
 Console.WriteLine ($"Guess a number between {minRange} and {maxRange}:");
 // 4. Tell player which attempt it is and if the number is correct/to high/to low
