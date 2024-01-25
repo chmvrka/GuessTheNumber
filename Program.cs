@@ -1,15 +1,20 @@
-﻿using System.ComponentModel;
-
-Console.WriteLine("Let's play Guess The Number!");
+﻿Console.WriteLine("Let's play Guess The Number!");
 
 // 1. Ask the player for a range of numbers
 Console.WriteLine("Provide a range of numbers between which you want to guess");
 
 Console.Write("Minimum: ");
-int.TryParse(Console.ReadLine(), out int minRange);
+bool minResult = int.TryParse(Console.ReadLine()?.Trim(), out int minRange);
 
 Console.Write("Maximum: ");
-int.TryParse(Console.ReadLine(), out int maxRange);
+bool maxResult = int.TryParse(Console.ReadLine()?.Trim(), out int maxRange);
+
+if(!minResult || !maxResult || maxRange <= minRange)
+{
+    minRange = 0;
+    maxRange = 100;
+    Console.WriteLine($"I don't get your math so it will be a number between {minRange} and {maxRange}");
+}
 
 // 2. Random number generator
 // 3. Ask player to provide number
