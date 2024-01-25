@@ -9,7 +9,7 @@ bool minResult = int.TryParse(Console.ReadLine()?.Trim(), out int minRange);
 Console.Write("Maximum: ");
 bool maxResult = int.TryParse(Console.ReadLine()?.Trim(), out int maxRange);
 
-if(!minResult || !maxResult || maxRange <= minRange)
+if (!minResult || !maxResult || maxRange <= minRange)
 {
     minRange = 0;
     maxRange = 100;
@@ -18,12 +18,37 @@ if(!minResult || !maxResult || maxRange <= minRange)
 
 // 2. Random number generator (done)
 Random rng = new Random();
-int generatedNumber = rng.Next(minRange, maxRange+1);
+int generatedNumber = rng.Next(minRange, maxRange + 1);
 
 // 3. Ask player to provide number
-Console.WriteLine ($"Guess a number between {minRange} and {maxRange}:");
+int amountGuesses = 1;
+Console.WriteLine($"== Attempt: {amountGuesses}");
+Console.WriteLine($"Guess a number between {minRange} and {maxRange}:");
+bool result = int.TryParse(Console.ReadLine()?.Trim(), out int guess);
+
 // 4. Tell player which attempt it is and if the number is correct/to high/to low
+
+while (guess != generatedNumber)
+{
+    amountGuesses += 1;
+    Console.WriteLine($"== Attempt: {amountGuesses}");
+
+    if (guess < generatedNumber)
+    {
+        Console.WriteLine("You guessed wrong, please try something higher:");
+    }
+    else if (guess > generatedNumber)
+    {
+        Console.WriteLine("You guessed wrong, please try something lower:");
+    }
+
+    int.TryParse(Console.ReadLine()?.Trim(), out guess);
+}
+
 // 5. Sum Up if the player guessed
+Console.WriteLine($"You guessed right! It took you {amountGuesses} attempt(s)");
 // 6. Ask if the player wants to play again
 
+Console.WriteLine("Thanks for playing!");
+Console.WriteLine("Press any key to continue...");
 Console.ReadKey();
