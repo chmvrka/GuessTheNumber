@@ -5,7 +5,7 @@ bool keepPlaying = true;
 do
 {
     // 1. Ask the player for a range of numbers (done)
-    Console.WriteLine("Provide a range of numbers between which you want to guess");
+    Console.WriteLine(Environment.NewLine + "Provide a range of numbers between which you want to guess");
 
     Console.Write("Minimum: ");
     bool minResult = int.TryParse(Console.ReadLine()?.Trim(), out int minRange);
@@ -26,7 +26,7 @@ do
 
     // 3. Ask player to provide number (done)
     int amountGuesses = 1;
-    Console.WriteLine($"== Attempt: {amountGuesses}");
+    Console.WriteLine(Environment.NewLine + $"== Attempt: {amountGuesses}");
     Console.WriteLine($"Guess a number between {minRange} and {maxRange}:");
     bool result = int.TryParse(Console.ReadLine()?.Trim(), out int guess);
 
@@ -35,7 +35,7 @@ do
     while (guess != generatedNumber)
     {
         amountGuesses += 1;
-        Console.WriteLine($"== Attempt: {amountGuesses}");
+        Console.WriteLine(Environment.NewLine + $"== Attempt: {amountGuesses}");
 
         if (guess < generatedNumber)
         {
@@ -49,16 +49,16 @@ do
         int.TryParse(Console.ReadLine()?.Trim(), out guess);
     }
 
-    // 5. Sum Up if the player guessed
-    Console.WriteLine($"You guessed right! It took you {amountGuesses} attempt(s)");
+    // 5. Sum Up if the player guessed (done)
+    Console.WriteLine(Environment.NewLine + $"You guessed right! It took you {amountGuesses} attempt(s)");
 
-    // 6. Ask if the player wants to play again
+    // 6. Ask if the player wants to play again (done)
     string? providedSign;
     do
     {
     Console.Write("Do you want to play again? (yes/no): ");
     providedSign = Console.ReadLine()?.ToLower().Trim();
-    } while (providedSign == "yes" || providedSign == "no");
+    } while (providedSign != "yes" && providedSign != "no");
 
     if (providedSign == "no")
     {
@@ -67,7 +67,7 @@ do
 
 } while (keepPlaying);
 
-
+Console.WriteLine();
 Console.WriteLine("Thanks for playing!");
 Console.WriteLine("Press any key to continue...");
 Console.ReadKey();
