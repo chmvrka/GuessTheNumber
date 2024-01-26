@@ -49,8 +49,8 @@ do
     string? providedSign;
     do
     {
-    Console.Write("Do you want to play again? (yes/no): ");
-    providedSign = Console.ReadLine()?.ToLower().Trim();
+        Console.Write("Do you want to play again? (yes/no): ");
+        providedSign = Console.ReadLine()?.ToLower().Trim();
     } while (providedSign != "yes" && providedSign != "no");
 
     if (providedSign == "no")
